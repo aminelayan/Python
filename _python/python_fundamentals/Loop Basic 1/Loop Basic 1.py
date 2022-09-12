@@ -16,7 +16,8 @@ sum=0
 for x in range(0,500000):
     if x % 2 != 0:
         sum += x
-        print(sum)
+        
+ print(sum)
 # Countdown by Fours
 for o in range(2018,0,-4):
     print(o)
