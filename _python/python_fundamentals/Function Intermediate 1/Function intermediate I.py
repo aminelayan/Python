@@ -1,7 +1,7 @@
 #function intermediate 1
 import random
 def randInt(min,max):
-    num = ((random.random()) * (max-min)) + min
+    num = ((random.random()) * (max-min))
     return num
 
 print(randInt(0,1)) 		    # should print a random integer between 0 to 1
