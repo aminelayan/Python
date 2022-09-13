@@ -1,24 +1,24 @@
-#1 Countdown
-def countdown(a):
-    result = []
-    for x in range(a, 0, -1):
-        result.append(x)
-    return result
-print(countdown(5))
+# #1 Countdown
+# def countdown(a):
+#     result = []
+#     for x in range(a, 0, -1):
+#         result.append(x)
+#     return result
+# print(countdown(5))
 
 #2.Print and Return
-def printandreturn(i,j):
-    print(i)
-    return j
-print(printandreturn(1,2))
-
-#3 First Plus Length
-def firstlen(list):
-    sum=list[0]+len(list)
-    return sum
-list=[1,2,3,4,5]
-print(firstlen(list))
-
+def printandreturn(list):
+    print(list[0])
+    return list[1]
+print(printandreturn([1,2]))
+#
+# #3 First Plus Length
+# def firstlen(list):
+#     sum=list[0]+len(list)
+#     return sum
+# list=[1,2,3,4,5]
+# print(firstlen(list))
+#
 #4 Values Greater than Second
 def greaterthan(list):
     maxlist=[]
@@ -31,12 +31,12 @@ def greaterthan(list):
     return maxlist
 print(greaterthan([1,2,3,4,5,2]))
 print(greaterthan([3]))
-
-#5 This Length, That Value
-def lengthvalue(s,v):
-    list=[]
-    for x in range(0,s):
-        list.append(v)
-    return list
-print(lengthvalue(6,9))
+#
+# #5 This Length, That Value
+# def lengthvalue(s,v):
+#     list=[]
+#     for x in range(0,s):
+#         list.append(v)
+#     return list
+# print(lengthvalue(6,9))
 

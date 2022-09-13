@@ -83,8 +83,7 @@ def ultimate(list):
             max=list[i]
     dictionary={'sumTotal':sum,'average':avg,'minimum':min,'maximum':max}
     return dictionary
-f=ultimate([2,3,4,5,6,7,8])
-print(f)
+print(ultimate([2,3,4,5,6,7,8]))
 
 #9.Reverse List
 def reverseme(list):
