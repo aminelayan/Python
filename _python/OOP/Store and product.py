@@ -53,7 +53,8 @@ cerelac=Product(name="Cerelac",price=7,category="Baby Food")
 amin.add_product(steak).add_product(cola).add_product(molikhia).add_product(sprite).add_product(cerelac).inflation(0.5)
 cerelac.print_info()
 cerelac.update_price(0.5,True)
-amin.sell_product(4)
+cerelac.print_info()
+amin.sell_product(3)
 
 
 
