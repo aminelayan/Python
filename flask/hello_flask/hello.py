@@ -22,6 +22,9 @@ def saysth(name):
 def repeatme(repeat, textme):
         return textme * int(repeat)
 
+@app.errorhandler(404)
+def wrong(e):
+        return "Sorry! No response. Try again."
 
 if __name__ == "__main__":
     app.run(debug=True)
