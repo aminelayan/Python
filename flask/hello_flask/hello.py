@@ -20,11 +20,8 @@ def saysth(name):
 
 @app.route('/repeat/<int:repeat>/<textme>')
 def repeatme(repeat, textme):
-    if isinstance(repeat, int):
         return textme * int(repeat)
-    else:
-        return
-@app.route()
+
 
 if __name__ == "__main__":
     app.run(debug=True)
