@@ -1,0 +1,30 @@
+
+
+.container {
+    border: 2px solid black;
+    margin: 0 auto;
+    width: 400px;
+}
+.location,.name,.language{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+#submit{
+    border: 2px black solid;
+    background-color: rgba(76, 175, 142, 0.707);
+    box-shadow: 3px 3px rgba(171, 158, 158, 0.783);
+    margin-top: 5px;
+}
+#con1{
+    margin: 0 auto;
+    border: 2px black solid;
+    width: 400px;
+    text-align: center;
+}

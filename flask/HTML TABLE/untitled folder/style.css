@@ -1,0 +1,23 @@
+*{
+    font-size: large;
+    color: palevioletred;
+}
+
+table{
+    border: 2px solid black;
+    margin: 0 auto;
+   
+
+}
+.table{
+width: 500px;
+}
+tr {
+    border: 1px solid black ;
+}
+td{
+    border: 1px solid black ;
+}
+th{
+    padding: 5px;
+}
