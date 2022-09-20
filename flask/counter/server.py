@@ -7,16 +7,17 @@ app.secret_key='amin'
 def index():
     if 'count' not in session:
         session['count']=0
+    session['count']+=1
     return render_template("index.html", count= session['count'])
 
 @app.route('/addone')
 def addone():
-    session['count']+=1
+    session['count']
     return redirect('/')
 
 @app.route('/addtwo')
 def addtwo():
-    session['count']+=2
+    session['count']+=1
     return redirect('/')
 @app.route('/reset')
 def reset():
