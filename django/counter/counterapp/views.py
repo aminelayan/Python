@@ -4,22 +4,22 @@ def index(request):
     if 'counter' in request.session:
         request.session['counter']+=1
     else:
-        request.session['counter']=1
+        request.session['counter']=0
     
     return render(request,'index.html')
 
 def destroyme(request):
     if 'counter' in request.session:
-        request.session['counter']=1
-    return render(request,'index.html')
+        del request.session['counter']
+    return redirect('/')
 
 def add2(request):
     if 'counter' in request.session:
-        request.session['counter']+=2
+        request.session['counter']+=1
     else:
         request.session['counter']=0
     
-    return render(request,'index.html')
+    return redirect('/')
 
 def addnumber(request):
     if 'counter' in request.session:
@@ -28,4 +28,4 @@ def addnumber(request):
     else:
         request.session['counter']=0
     
-    return render(request,'index.html')
+    return redirect('/')
