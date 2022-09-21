@@ -1,0 +1,16 @@
+
+div{
+    display: flex;
+    justify-content: space-around;
+}
+form{
+    border: 1px black solid;
+    width: 200px;
+    text-align: center;
+}
+input{
+    border: 2px solid black;
+}
+#play{
+    border: 0px;
+}

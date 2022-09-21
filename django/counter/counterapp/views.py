@@ -8,12 +8,13 @@ def index(request):
     
     return render(request,'index.html')
 
-def destroyme(request):
+def destroy_session(request):
     if 'counter' in request.session:
         del request.session['counter']
     return redirect('/')
 
-def add2(request):
+
+def increase_counter_by_two(request):
     if 'counter' in request.session:
         request.session['counter']+=1
     else:
@@ -21,7 +22,8 @@ def add2(request):
     
     return redirect('/')
 
-def addnumber(request):
+
+def increase_counter_by_fixed_number(request):
     if 'counter' in request.session:
         print(type(request.session['counter'])) #int
         request.session['counter']+=int(request.POST['numbertoadd'])

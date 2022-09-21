@@ -3,7 +3,7 @@ from . import views
 # Create your views here.
 urlpatterns = [
     path('',views.index),  
-    path('destroy_session',views.destroyme),
-    path('plus2',views.add2),
-    path('useradd',views.addnumber)
+    path('destroy_session',views.destroy_session),
+    path('plus2',views.increase_counter_by_two),
+    path('useradd',views.increase_counter_by_fixed_number)
 ]
