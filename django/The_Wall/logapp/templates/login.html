@@ -4,36 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login And Registration</title>
-</head>
-<body>
-    <form action="/register" method="post">
-    <h1>Registration</h1>
-    {% csrf_token %}
-    <input type="hidden" name="which_form" value="register">
-    <label for="first_name">First Name:</label>
-    <input type="text" name="first_name">
-    <label for="last_name">Last Name:</label>
-    <input type="text" name="last_name">
-    <label for="email">Email:</label>
-    <input type="text" name="email">
-    <label for="password">Password:</label>
-    <input type="password" name="password">
-    <label for="confirm">Confirm PW:</label>
-    <input type="password" name="confirm">
-    <inpu<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Login And Registration</title>
 </head>
 <body>
-    <form action="/register" method="post">
+    <form action="/registration" method="post">
         <h1>Registration</h1>
         {% csrf_token %}
 
@@ -60,7 +37,7 @@
                 <label for="password">Password</label>
                 <input type="password"  name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-
+            
             <div class="form-group">
                 <label for="confirm">Confirm Password</label>
                 <input type="password"  name="confirm" class="form-control" placeholder="Password">
@@ -82,7 +59,7 @@
             </div>
             <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Password">
             </div>
             <input type="submit" value="Log In" class="btn btn-primary">
 
@@ -96,27 +73,5 @@
             </ul>
             {% endif %}
         </form>
-</body>
-</html>t type="submit" value="Register">
-    </form>
-    <form action="/check_log" method="post">
-        <h1>Log In</h1>
-        {% csrf_token %}
-        <input type="hidden" name="loginid" value="id">
-        <label for="email">Email:</label>
-        <input type="text" name="email">
-        <label for="password">Password:</label>
-        <input type="password" name="password">
-        <input type="submit" value="Log In">
-    </form>
-
-    {% if messages %}
-    <ul class="messages">    
-        {% for message in messages %}    
-        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-        {% endfor %}
-    </ul>
-    {% endif %}
-
 </body>
 </html>

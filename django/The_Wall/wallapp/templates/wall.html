@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall</title>
+    <style>
+        header{
+            display: flex;
+            justify-content: space-between;
+        }
+        div{
+            display: flex;
+        }
+        form>input{
+            background-color:#017BFE;
+            border: #017BFE solid;
+            box-shadow: 3px 3px black;
+            display: flex;
+        }
+        form>textarea{
+            width: 70%;
+        }
+        form{margin-top: 20px;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CodingDojo Wall</h1>
+        <h2>Welcome {{request.session.first_name }} {{request.session.last_name}} </h2>
+        <form action="logout" method="post">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="Log Out">
+        </form>
+    </header>
+        <form action="post_message" method="post">
+            {% csrf_token %}
+            <p>Post Message</p>
+            <textarea name="post_message" cols="30" rows="10"></textarea>
+            <input type="submit" value="Post A Message">
+        </form>
+        <br>
+        {% for message in messages_a %}
+        <label>{{message.user.first_name}} {{message.created_at}}</label>
+        <p>{{message.message}}</p>
+
+        {% for comment in message.message_comment.all %}
+        <p>{{comment.user.first_name}} {{comment.user.last_name}} {{comment.created_at}}</p>
+        <p>{{comment.comment}}</p>
+        {% endfor %}
+
+        <form action="delete_comment" method="post">
+        {% csrf_token %}
+            <input type="hidden" value="{{comment.id}}" name="commentid">
+            <input type="submit" value="Delete Comment">
+        </form>
+
+        <br>
+        <form action="post_comment" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{message.id}}" name="message_id">
+            <p>Post A Comment</p>
+            <textarea name="post_comment" cols="30" rows="10"></textarea>
+            <input type="submit" value="Post A Comment">
+        </form>
+        <br>
+        {% endfor %}
+</body>
+</html>

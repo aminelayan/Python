@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect, HttpResponse
+34from django.shortcuts import render,redirect, HttpResponse
 from django.contrib import messages
 from logapp import models
 from .models import User
