@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            display: flex;
+            justify-content: space-around;
+            border-bottom: #017BFE solid 1px;
+            padding: 20px;
+        }
+        header>form>input{
+            background-color:#017BFE;
+            border: #017BFE solid;
+            box-shadow: 3px 3px black;
+            display: flex;
+            margin-top: 10px;
+        }
+        body>main>form{margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid #017BFE;
+        padding: 0px 10px 20px 20px;
+        width: 20%;
+
+    }
+    body>main>form>input{
+            border: #017BFE solid;
+            margin-top: 5px;
+            
+    }
+    main{
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+    }
+
+</style>
+</head>
+<body>
+    <header>
+    <h1>Welcome {{request.session.first_name}} {{request.session.last_name}}</h1>
+    <form action="logout" method="post">
+        {% csrf_token %}
+        <input type="submit" name="logout" value="Log Out">
+    </form>
+</header>
+<main>
+<form action="add" method="post">
+    <h1>Add a Favorite Book</h1>
+    {% csrf_token %}
+    <label for="title">Title</label>
+    <input type="text" name="title" placeholder="Book Title">
+    <label for="desc">Description</label>
+    <input type="text" name="desc" placeholder="Book Description">
+    <input type="submit" value="Add">
+    <br>
+    {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+</form>
+<form>
+<h1>All Books</h1>
+            {% for b in allbooks%}
+            <a href="/books/{{b.id}}">{{b.title}}</a>
+            <h6>(added by {{b.uploaded_by.first_name}} {{b.uploaded_by.last_name}})</h6>
+            {%if user in b.users_who_like.all %}<h6>This is one of your favorites</h6>
+            {%else%}<a href="/addfav/{{b.id}}">Add to Favorites</a>
+            {%endif%}
+            {%endfor%}
+</form>
+</main>
+
+</body>
+</html>

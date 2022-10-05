@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <style>
+        header{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: #017BFE solid 1px;
+        }
+        header>form>input{
+            background-color:#017BFE;
+            border: #017BFE solid;
+            box-shadow: 3px 3px black;
+            display: flex;
+        }
+        body>form{margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        border: 2px solid #017BFE;
+        padding: 0px 10px 20px 20px;
+        width: 40%;
+    }
+    body>form>input{
+            border: #017BFE solid;
+            margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+    <header>
+    <h1>Welcome {{request.session.first_name}} {{request.session.last_name}}</h1>
+    <form action="logout" method="post">
+        {% csrf_token %}
+        <input type="submit" name="logout" value="Log Out">
+    </form>
+</header>
+</div>
+<br>
+<div class="flex">
+    <div class="flex1">
+        
+        {% if book.uploaded_by.id == request.session.id %}
+        <form action="/update/{{book.id}}" method="post">
+            <table>
+            {%csrf_token%}
+            
+            <input type="text" class="favnyid" name="title" value="{{book.title}}"></input>
+
+                <tr>
+                    <td><p>Added by :</p></td>
+                    <td><p name="name">{{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Added on :</p></td>
+                    <td><p name="created">{{book.created_at}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Last updated on :</p></td>
+                    <td><p name="createdat">{{book.updated_at}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Description :</p></td>
+                    <td><textarea name="desc"  cols="30" rows="3">{{book.desc}}</textarea></td>
+
+                </tr>
+                <tr>
+                    <td><p></p></td>
+                    <td><input type="submit" name="up" value="Update"></td>
+                    <td><input type="submit" name="up" value="Delete" style="margin-left:-100px;"></td>
+
+                    
+                </tr>
+              
+            </table>
+        </form>  <ul class="messages">  
+            {% if messages %}
+
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+            
+            {%else%}
+            <h2>{{book.title}}</h2>
+            <table>
+                <tr>
+                    <td><p>Added by :</p></td>
+                    <td><p>{{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Added on :</p></td>
+                    <td><p>{{book.created_at}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Last updated on :</p></td>
+                    <td><p>{{book.updated_at}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Description :</p></td>
+                    <td><p>{{book.desc}}</p></td>
+
+                </tr>
+             
+            </table>
+        {% endif %}
+    </div>
+    <div class="flex2">
+        <h2>Users who likes this book</h2>
+        
+            <ul>
+                {% for i in likebook %}
+                {% if i.id == request.session.id %}
+                <li>{{i.first_name}} {{i.last_name}} <a href="/unfav/{{book.id}}">Un-Fav</a></li>
+                {% else %}
+                <li>{{i.first_name}} {{i.last_name}}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% if user not in likebook%}
+                    <a href="/addfav2/{{book.id}}">Add to Favorites</a>
+            {% endif %}
+            
+            
+        
+        
+
+            
+
+    </div>
+</div>
+</body>
+</html>
